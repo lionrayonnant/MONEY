@@ -8,6 +8,8 @@
  * Make a git clone with `git clone https://github.com/lionrayonnant/MONEY/`
  - Once you have download the code, you need to download the **pystyle** library.
  - `pip3 install pystyle`
+ - Then, you can run MONEY with `python MONEY.py`
+ - Enjoy !
  
  # WHY ?
  Because here, we love money and potato games. This game can run on any computer, I know it is well optimised.
