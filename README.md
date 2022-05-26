@@ -1,5 +1,4 @@
 ![money](https://user-images.githubusercontent.com/106342136/170593911-5990295b-52b1-4e3d-be0d-31729020d350.png)
-# 
  My first game, MONEY.
  
  # INSTALLATION
