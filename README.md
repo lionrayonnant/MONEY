@@ -1,6 +1,9 @@
 # MONEY
  My first game, MONEY.
  
+ # INSTALLATION
+ <test>
+ 
  # WHY ?
  Because here, we love money and potato games. This game can run on any computer, I know it is well optimised.
 
