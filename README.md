@@ -6,7 +6,7 @@
  Two options :
  * Download the .zip with the green button and unzip him.
  * Make a git clone with
- 'git clone https://github.com/lionrayonnant/MONEY/'
+ "git clone https://github.com/lionrayonnant/MONEY/"
  
  # WHY ?
  Because here, we love money and potato games. This game can run on any computer, I know it is well optimised.
