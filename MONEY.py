@@ -2,12 +2,27 @@
 
 import os
 import time
-from pystyle import Colors, Colorate, Add
+from pystyle import Colors, Colorate
 from random import randint
-def Replay():
-    replay = input("Souhaitez vous rejouer ? ( oui / non ) : ")
-    if replay == "non":
-        banner0 = '''
+intervalle = ""
+
+banner0 = '''
+       
+ 88,dPYba,,adPYba,   ,adPPYba,  8b,dPPYba,   ,adPPYba, 8b       d8  
+ 88P'   "88"    "8a a8"     "8a 88P'   `"8a a8P_____88 `8b     d8'  
+ 88      88      88 8b       d8 88       88 8PP"""""""  `8b   d8'   
+ 88      88      88 "8a,   ,a8" 88       88 "8b,   ,aa   `8b,d8'    
+ 88      88      88  `"YbbdP"'  88       88  `"Ybbd8"'     Y88'     
+                                                           d8'      
+                                                          d8'  '''
+banner1 = '''
+        ░██████╗░░██████╗░
+        ██╔════╝░██╔════╝░
+        ██║░░██╗░██║░░██╗░
+        ██║░░╚██╗██║░░╚██╗
+        ╚██████╔╝╚██████╔╝
+        ░╚═════╝░░╚═════╝░    '''
+banner2 = '''
      ████████████████████████████████                
   ██                                ██              
 ██                                  ░░██            
@@ -41,9 +56,13 @@ def Replay():
           ██▓▓░░░░░░░░▓▓░░░░░░▓▓░░▓▓▓▓░░▓▓██        
             ██░░████░░██████████░░████░░██          
             ████    ████      ████    ████        '''
+def Replay():
+    global banner2
+    replay = input("Souhaitez vous rejouer ? ( oui / non ) : ")
+    if replay == "non":
         text = ""
         os.system('cls' if os.name == 'nt' else 'clear')
-        print(Add.Add(banner0, text, True))
+        print(banner2)
         time.sleep(2)
         exit()
     elif replay == "oui":
@@ -55,16 +74,8 @@ def Replay():
 
 def boucle_du_jeu():                #the main loop
     jeu = 0
-    banner1 = '''
-88,dPYba,,adPYba,   ,adPPYba,  8b,dPPYba,   ,adPPYba, 8b       d8  
-88P'   "88"    "8a a8"     "8a 88P'   `"8a a8P_____88 `8b     d8'  
-88      88      88 8b       d8 88       88 8PP"""""""  `8b   d8'   
-88      88      88 "8a,   ,a8" 88       88 "8b,   ,aa   `8b,d8'    
-88      88      88  `"YbbdP"'  88       88  `"Ybbd8"'     Y88'     
-                                                          d8'      
-                                                         d8'  '''
-    text = ""
-    print(Add.Add(banner1, text, True))
+    global banner0
+    print(banner0)
     print("Voici les niveaux et leur intervalle respectifs : ")
     print()
 
@@ -74,14 +85,17 @@ def boucle_du_jeu():                #the main loop
     print(Colorate.Color(Colors.yellow, "2 = [0€;30€]", True))
     print(Colorate.Color(Colors.orange, "3 = [0€;60€]", True))
     print(Colorate.Color(Colors.red, "4 = [0€;100€] ( DOOM SLAYER mode )", True))
-    print()
-    niveau = int(input("Définissez le niveau dans lequel vous voulez jouer : "))
+    try:
+        niveau = int(input("Définissez le niveau dans lequel vous voulez jouer : "))
+    except:
+        print("Choix invalide.")
+        boucle_du_jeu()
     print()
     print()
 
 #the level choice
 
-    print("Vous avez choisis le niveau {}.".format(niveau))
+    print(f"Vous avez choisis le niveau {niveau}.")
 
 #the interval in function of the level
 
@@ -100,10 +114,14 @@ def boucle_du_jeu():                #the main loop
 
 #the challenge
 
-    while jeu == 0:
+    while True:
         text = "La somme est entre "+intervalle
         print(Colorate.Color(Colors.gray, text, True))
-        nombre_devine = int(input("Entrer une somme : "))
+        try:
+            nombre_devine = int(input("Entrer une somme : "))
+        except:
+            print("Choix invalide")
+
         #the indications
         if nombre_devine < nombre_cache:
             text = "Plus cher"
@@ -112,18 +130,12 @@ def boucle_du_jeu():                #the main loop
             text = "Moins cher"
             print(Colorate.Color(Colors.dark_red, text, True))
         else:
+            global banner1
             jeu = 1
-            banner2 = '''
-░██████╗░░██████╗░
-██╔════╝░██╔════╝░
-██║░░██╗░██║░░██╗░
-██║░░╚██╗██║░░╚██╗
-╚██████╔╝╚██████╔╝
-░╚═════╝░░╚═════╝░    '''
-            text = ""
-            print(Add.Add(banner2, text, True))
+            print(banner1)
             print("Bravo vous avez gagné ! La somme était bien {}".format(nombre_cache))
-            Replay()    #make a call to the Replay function
+            Replay()
+            break       #make a call to the Replay function
 
-boucle_du_jeu()
-
+if __name__ == '__main__':
+    boucle_du_jeu()
