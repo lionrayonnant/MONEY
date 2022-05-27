@@ -70,7 +70,7 @@ def Replay():
         Replay()
 
 def boucle_du_jeu(): 
-    print(" ")
+    print(banner1)
     print("Voici les niveaux et leur intervalle respectifs : ")
     print(" ")
 
@@ -119,6 +119,7 @@ def boucle_du_jeu():
             print(Colorate.Color(Colors.dark_red, text, True))
         else:
             text = ""
+            global banner2
             print(Add.Add(banner2, text, True))
             print("Bravo vous avez gagné ! La somme était bien {}".format(nombre_cache))
             Replay()
